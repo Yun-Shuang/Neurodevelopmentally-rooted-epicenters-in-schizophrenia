@@ -1,0 +1,33 @@
+```{r setup, include=FALSE}
+library(cifti)
+library(ggseg)
+library(ggsegSchaefer) #remotes::install_github("monicathieu/ggsegSchaefer")
+library(dplyr)
+suppressPackageStartupMessages({
+  library(dplyr)
+  library(ggplot2)
+})
+```
+
+**Get Cortical Map Data**
+```{r warning=FALSE}
+#read S-A axis rank
+setwd("/media/shuang/data/repository/public_data/S-A_axis/")
+brains <- read.csv("S-Aranks.csv", header=TRUE) #read in cortical map data
+regions <- read.csv("schaefer400_regions.csv", header=TRUE) #read in glasser parcel names
+statdat  <- cbind(regions,brains) #add parcel names to df
+#View(statdat)
+```
+
+```{r warning=FALSE}
+##Visualize Sensorimotor-association neurodevelopmental Maps
+ggseg(.data = statdat, atlas = "schaefer17_400", mapping=aes(fill=finalrank.wholebrain), position=c("stacked")) + theme_void() + scale_fill_gradientn(colours=warmcool(40), guide = "colourbar")
+```
+```{r, message = F, warning = F}
+##Visualize Cortical Maps
+ggseg(.data = statdat, atlas = "schaefer17_400", mapping=aes(fill=fc), position=c("stacked")) + theme_void() + scale_fill_gradientn(colours=coolwarm(100), guide = "colourbar")
+```
+```{r, message = F, warning = F}
+##Visualize structural epicenter Maps
+ggseg(.data = statdat, atlas = "schaefer17_400", mapping=aes(fill=sc), position=c("stacked")) + theme_void() + scale_fill_gradientn(colours=coolwarm(100), guide = "colourbar")
+```
