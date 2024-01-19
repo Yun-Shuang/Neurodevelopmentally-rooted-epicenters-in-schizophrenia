@@ -1,6 +1,6 @@
 
 clear; clc;
-%% Figure 4: Disorders and evolution-associated analyses
+%% Figure 3: Disorders and evolution-associated analyses
 addpath(genpath('/media/shuang/data/repository/matlab_packages/BrainSpace-0.1.2'));
 addpath(genpath('/media/shuang/data/repository/matlab_packages/cifti-matlab-master'));
 addpath(genpath('/media/shuang/data/repository/matlab_packages/BrewerMap-master'));
@@ -26,7 +26,7 @@ for i=1:size(Ngenes,1)
     sigg(find(strcmp(gene_name,Ngenes(i))),2)=Nw(i);
 end
 
-%% Figure 4A: find overlap genes with AHBA
+%% Figure 3A: find overlap genes with AHBA
 % 6 disorders: ASD; SZ; BD; MDD; Alcoholism; IBD
 T = table2cell(readtable('/media/shuang/data/repository/public_data/DGE_6disorders/genesDGEfdr.csv')); % load entrezID of genes
 overlapgene = cell(size(gene_name));
@@ -97,7 +97,7 @@ for i=1:6 % 6 disorders
 end
 FDR = mafdr(perm_p,'BHFDR',true); % FDR correction
 
-%% Figure 4B: human accelerated region genes
+%% Figure 3B: human accelerated region genes
 load('/media/shuang/data/repository/result/geneloadings.mat');
 [B,I]=sort(gload(idx),'descend'); % from PLS+ to PLS-
 T=table2cell(readtable('/media/shuang/data/repository/public_data/HARs_genes/HARgene.csv'));
