@@ -1,6 +1,6 @@
 
 clear;clc;
-%% Figure3: PLS analyses between gene expression maps and disease epicenters
+%% Figure2: PLS analyses between gene expression maps and disease epicenters
 addpath(genpath('/media/shuang/data/repository/matlab_packages/brainstat_matlab'));
 addpath(genpath('/media/shuang/data/repository/matlab_packages/hansen_genescognition-master'));
 addpath(genpath('/media/shuang/data/repository/matlab_packages/BrewerMap-master'));
@@ -11,7 +11,7 @@ path_wb_command = ['/media/shuang/data/repository/matlab_packages/workbench/bin_
 labeling2 = ciftiopen('/media/shuang/data/repository/templates/Schaefer2018_400Parcels_7Networks_order.dlabel.nii',path_wb_command);
 labeling = labeling2.cdata;
 
-%% Figure 3A: PLS analysis
+%% Figure 2A: PLS analysis
 load('/media/shuang/data/repository/public_data/expression.mat');
 X=zscore(expression);
 load('/media/shuang/data/repository/result/epifc.mat');
@@ -114,7 +114,7 @@ set(gca,'xticklabel',{'test','train'})
 ylabel('correlation')
 title('cross validation')
 
-%% Figure 3B: plot gene and epicenter scores
+%% Figure 2B: plot gene and epicenter scores
 obj=plot_hemispheres(result.usc(:,1),{surf_lh,surf_rh}, ...
              'parcellation', labeling, ...
              'labeltext','Gene scores');
@@ -127,7 +127,7 @@ obj=plot_hemispheres(result.vsc(:,1),{surf_lh,surf_rh}, ...
 obj.colormaps([0.7 0.7 0.7; flipud(brewermap([],'PiYG'))])
 obj.colorlimits([-3, 3]) % epicenter scores
 
-%%  Figure 3C: get significant genes and their loadings
+%%  Figure 2C: get significant genes and their loadings
 load('/media/shuang/data/repository/public_data/gene_names.mat'); % all gene names
 % spin test to generate null distributions of gene loadings
 option.method = 3;
