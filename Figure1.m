@@ -1,6 +1,6 @@
 
 clear; clc;
-%% Figure 1A; epicenters mapping
+%% Figure 1; epicenters mapping
 addpath(genpath('/media/shuang/data/repository/matlab_packages/BrainSpace-0.1.2'));
 addpath(genpath('/media/shuang/data/repository/matlab_packages/cifti-matlab-master'));
 addpath(genpath('/media/shuang/data/repository/matlab_packages/freesurfer_matlab'));
