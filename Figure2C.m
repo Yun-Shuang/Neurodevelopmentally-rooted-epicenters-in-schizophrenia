@@ -1,6 +1,6 @@
 
 clear;clc;
-%% Figure 1D; epicenters cognitive relevance---Neurosynth decoding
+%% Figure 2C; epicenters cognitive relevance---Neurosynth decoding
 
 addpath(genpath('/media/shuang/data/repository/matlab_packages/BrainSpace-0.1.2'));
 addpath(genpath('/media/shuang/data/repository/matlab_packages/cifti-matlab-master'));
